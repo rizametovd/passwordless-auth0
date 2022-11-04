@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useRoutes } from 'react-router-dom';
+import { ProtectedRoute } from './auth/ProtectedRoute/ProtectedRoute';
+import HomePage from './pages/HomePage/HomePage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
+import UsersPage from './pages/UsersPage/UsersPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+  // console.log('useAuth0:', useAuth0());
+
+  const routes = useRoutes([
+    {
+      path: '/',
+      element: <ProtectedRoute component={HomePage} />,
+      children: [
+        {
+          path: '/profile',
+          element: <ProtectedRoute component={ProfilePage} />,
+        },
+        {
+          path: '/users',
+          element: <ProtectedRoute component={UsersPage} />,
+        },
+      ],
+    },
+  ]);
+
+  return <div>{routes}</div>;
+};
 
 export default App;
