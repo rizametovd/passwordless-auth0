@@ -1,12 +1,12 @@
-// import { useAuth0 } from '@auth0/auth0-react';
 import { useRoutes } from 'react-router-dom';
 import { ProtectedRoute } from './auth/ProtectedRoute/ProtectedRoute';
 import HomePage from './pages/HomePage/HomePage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import UsersPage from './pages/UsersPage/UsersPage';
+import Form from './components/Form/Form';
 
 const App: React.FC = () => {
-  // console.log('useAuth0:', useAuth0());
+
 
   const routes = useRoutes([
     {
@@ -23,9 +23,17 @@ const App: React.FC = () => {
         },
       ],
     },
+    {
+      path: '/auth',
+      element: <Form />,
+    },
   ]);
 
   return <div>{routes}</div>;
+
+  // return (
+  //   <Form />
+  // )
 };
 
 export default App;
