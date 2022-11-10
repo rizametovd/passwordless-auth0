@@ -9,6 +9,7 @@ const App: React.FC = () => {
   // console.log('useAuth0:', useAuth0());
 
   console.log('a')
+  console.log('b')
 
 
   const routes = useRoutes([
