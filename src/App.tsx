@@ -8,6 +8,8 @@ import Form from './components/Form/Form';
 const App: React.FC = () => {
 
 
+  console.log('2')
+
   const routes = useRoutes([
     {
       path: '/',
