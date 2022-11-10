@@ -12,6 +12,7 @@ const App: React.FC = () => {
   console.log('b')
   console.log('c')
   console.log('d')
+  console.log('9')
 
 
   const routes = useRoutes([
